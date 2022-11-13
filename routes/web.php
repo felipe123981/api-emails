@@ -17,10 +17,10 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/send-mail', function() {
+Route::get('/confirm-account/{name}/{email}', function($name, $email) {
 	$user = new stdClass();
-	$user->name = "Senpai";
-	$user->email = "filipe.timachine@gmail.com";
+	$user->name = $name;
+	$user->email = $email;
 	//return new \App\Mail\newLaravelTips($user);
 	\Illuminate\Support\Facades\Mail::send(new \App\Mail\newLaravelTips($user));
 });
